@@ -30,7 +30,7 @@ extern keymap_config_t keymap_config;
 #define _EXIT_PLOVER 12
 
 // key definitions
-#define TERM   LCAG(KC_APP)
+#define LCAG LCAG(KC_NO)
 #define BRITE_U LCAG(KC_RIGHT)
 #define BRITE_D LCAG(KC_LEFT)
 #define ALTTAB LALT(LCTL(KC_TAB))
@@ -42,7 +42,7 @@ extern keymap_config_t keymap_config;
 #define XXXXXXX KC_NO
 
 // user macros (pc side)
-#define U(kc) LCAG(kc)
+#define U(kc) MEH(kc) // Shift+Ctrl+Alt+kc
 
 // macro keys
 #define KEYDELAY 150
@@ -65,25 +65,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Base
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
-   * │  '  │  ,  │  .  │  p  │  y  ┃ App │ Ter ┃  f  │  g  │  c  │  r  │  l  │
+   * │  '  │  ,  │  .  │  p  │  y  ┃ App │Numpd┃  f  │  g  │  c  │  r  │  l  │
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │  a  │  o  │  e  │  u  │  i  ┃Mute │MPlay┃  d  │  h  │  t  │  n  │  s  │
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │  ?  │  q  │  j  │  k  │  x  ┃Volm-│Volm+┃  b  │  m  │  w  │  v  │  z  │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │Numpd│Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │LCAG │Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│LCAG │ Alt │
    * │     │     │     │ Del │Space│Bkspc│Enter│ Tab │ Esc │     │     │     │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_BASE] = {
     {KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_APP,
-     TERM,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L},
+     NUMPAD,  KC_F,    KC_G,    KC_C,    KC_R,    KC_L},
     {KC_A,    MACRO_O, MVMNT_E, FUNCT_U, KC_I,    KC_MUTE,
      KC_MPLY, KC_D,    KC_H,    KC_T,    KC_N,    KC_S},
     {KC_QUES, KC_Q,    KC_J,    KC_K,    KC_X,    KC_VOLD,
      KC_VOLU, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z},
-    {KC_LALT, NUMPAD,  KC_LGUI, SFT_DEL, CTL_SPC, NUM_BSP,
-     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, HYPR,    KC_RALT}
+    {KC_LALT, LCAG,    KC_LGUI, SFT_DEL, CTL_SPC, NUM_BSP,
+     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, LCAG,    KC_RALT}
   };
 
   /* Shift
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │  !  │  Q  │  J  │  K  │  X  ┃     │     ┃  B  │  M  │  W  │  V  │  Z  │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │Numpd│Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │Hyper│Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│Hyper│ Alt │
    * │     │     │     │ Del │Space│Bkspc│Enter│ Tab │ Esc │     │     │     │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃     │     │     │     │     │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │     │Super│Shift│ Ctl │Numbr│     │ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │LCAG │Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│LCAG │ Alt │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_NUMBER] = {
@@ -127,8 +127,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, KC_8,    KC_0,    KC_2,    KC_4,    KC_6},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX},
-    {_______, XXXXXXX, _______, KC_LSFT, KC_LCTL, _______,
-     XXXXXXX, KC_RCTL, KC_RSFT, _______, _______, _______}
+    {_______, _______, _______, KC_LSFT, KC_LCTL, _______,
+     _______, KC_RCTL, KC_RSFT, _______, _______, _______}
   };
 
   /* Symbol
@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃     │     │     │     │     │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │     │Super│Shift│ Ctl │     │Symbl│ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │LCAG │Super│Shift│ Ctl │Numbr│Symbl│ Ctl │Shift│Super│LCAG │ Alt │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_SYMBOL] = {
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, KC_SLSH, KC_MINS, KC_PIPE, KC_BLSL},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX},
-    {_______, XXXXXXX, _______, KC_LSFT, KC_LCTL, XXXXXXX,
+    {_______, _______, _______, KC_LSFT, KC_LCTL, _______,
      _______, KC_RCTL, KC_RSFT, _______, _______, _______}
   };
 
@@ -161,7 +161,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃     │ F9  │ F10 │ F11 │ F12 │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │     │Super│Shift│ Ctl │     │     │ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │LCAG │Super│Shift│ Ctl │     │     │ Ctl │Shift│Super│LCAG │ Alt │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_FUNCTION] = {
@@ -171,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, KC_F5,   KC_F6,   KC_F7,   KC_F8},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12},
-    {_______, XXXXXXX, _______, KC_LSFT, KC_LCTL, XXXXXXX,
+    {_______, _______, _______, KC_LSFT, KC_LCTL, XXXXXXX,
      XXXXXXX, KC_RCTL, KC_RSFT, _______, _______, _______}
   };
 
@@ -205,7 +205,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃     │AltTb│     │     │ Esc │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │     │Super│Shift│ Ctl │     │     │ Ctl │Shift│Super│Hyper│ Alt │
+   * │ Alt │LCAG │Super│Shift│ Ctl │     │     │ Ctl │Shift│Super│LCAG │ Alt │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_MOVEMENT] = {
@@ -215,24 +215,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, ALTTAB,  XXXXXXX, XXXXXXX, KC_ESC},
-    {_______, XXXXXXX, _______, KC_LSFT, KC_LCTL, XXXXXXX,
+    {_______, _______, _______, KC_LSFT, KC_LCTL, XXXXXXX,
      XXXXXXX, KC_RCTL, KC_RSFT, _______, _______, _______}
   };
 
   /* Numpad
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
-   * │     │     │     │     │     ┃     │     ┃ Esc │ KP7 │ KP8 │ KP9 │ KP* │
+   * │     │     │     │     │     ┃     │Numpd┃ Esc │ KP7 │ KP8 │ KP9 │ KP* │
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃ Del │ KP4 │ KP5 │ KP6 │ KP+ │
    * ├─────┼─────┼─────┼─────┼─────╂─────┼─────╂─────┼─────┼─────┼─────┼─────┤
    * │     │     │     │     │     ┃     │     ┃ Tab │ KP1 │ KP2 │ KP3 │ KP- │
    * ╞═════╪═════╪═════╪═════╪═════╄━━━━━┿━━━━━╃═════╪═════╪═════╪═════╪═════╡
-   * │ Alt │Numpd│Super│Shift│ Ctl │     │     │KPEnt│ KP0 │ KP= │ KP. │ KP/ │
+   * │ Alt │LCAG │Super│Shift│ Ctl │     │     │KPEnt│ KP0 │ KP= │ KP. │ KP/ │
    * └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────╯
    */
   [_NUMPAD] = {
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-     XXXXXXX, KC_ESC,  KC_P7,   KC_P8,   KC_P9,   KC_PAST},
+     _______, KC_ESC,  KC_P7,   KC_P8,   KC_P9,   KC_PAST},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, KC_DEL,  KC_P4,   KC_P5,   KC_P6,   KC_PPLS},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
