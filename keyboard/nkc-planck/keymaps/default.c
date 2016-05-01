@@ -1,6 +1,6 @@
 #include "planck.h"
 #include "action_layer.h"
-#include "eeconfig.h"
+#include "timer.h"
 
 extern keymap_config_t keymap_config;
 // layer names
@@ -30,7 +30,7 @@ extern keymap_config_t keymap_config;
 #define _EXIT_PLOVER 12
 
 // key definitions
-#define LCAG LCAG(KC_NO)
+#define CAG LCAG(KC_NO)
 #define BRITE_U LCAG(KC_RIGHT)
 #define BRITE_D LCAG(KC_LEFT)
 #define ALTTAB LALT(LCTL(KC_TAB))
@@ -82,9 +82,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_MPLY, KC_D,    KC_H,    KC_T,    KC_N,    KC_S},
     {KC_QUES, KC_Q,    KC_J,    KC_K,    KC_X,    KC_VOLD,
      KC_VOLU, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z},
-    {KC_LALT, LCAG,    KC_LGUI, SFT_DEL, CTL_SPC, NUM_BSP,
-     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, LCAG,    KC_RALT}
-  };
+    {KC_LALT, CAG,     KC_LGUI, SFT_DEL, CTL_SPC, NUM_BSP,
+     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, CAG,     KC_RALT}
+  },
 
   /* Shift
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, S(KC_B), S(KC_M), S(KC_W), S(KC_V), S(KC_Z)},
     {_______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______, _______, _______}
-  };
+  },
 
   /* Number
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX},
     {_______, _______, _______, KC_LSFT, KC_LCTL, _______,
      _______, KC_RCTL, KC_RSFT, _______, _______, _______}
-  };
+  },
 
   /* Symbol
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -146,12 +146,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     {KC_GRV,  KC_HASH, KC_ASTR, KC_AT,   XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, KC_PLUS, KC_AMPR, KC_CIRC, KC_DLR},
     {KC_TILD, KC_UNDS, KC_PERC, KC_EQL,  XXXXXXX, XXXXXXX,
-     XXXXXXX, XXXXXXX, KC_SLSH, KC_MINS, KC_PIPE, KC_BLSL},
+     XXXXXXX, XXXXXXX, KC_SLSH, KC_MINS, KC_PIPE, KC_BSLS},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX},
     {_______, _______, _______, KC_LSFT, KC_LCTL, _______,
      _______, KC_RCTL, KC_RSFT, _______, _______, _______}
-  };
+  },
 
   /* Function
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, KC_F9,   KC_F10,  KC_F11,  KC_F12},
     {_______, _______, _______, KC_LSFT, KC_LCTL, XXXXXXX,
      XXXXXXX, KC_RCTL, KC_RSFT, _______, _______, _______}
-  };
+  },
 
   /* Macro
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -195,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, U(KC_I), U(KC_J), U(KC_K), U(KC_L)},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
      XXXXXXX, XXXXXXX, U(KC_M), U(KC_N), U(KC_O), U(KC_P)}
-  };
+  },
 
   /* Movement
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -217,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, ALTTAB,  XXXXXXX, XXXXXXX, KC_ESC},
     {_______, _______, _______, KC_LSFT, KC_LCTL, XXXXXXX,
      XXXXXXX, KC_RCTL, KC_RSFT, _______, _______, _______}
-  };
+  },
 
   /* Numpad
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -239,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, KC_TAB,  KC_P1,   KC_P2,   KC_P3,   KC_PMNS},
     {_______, _______, _______, KC_LSFT, KC_LCTL, XXXXXXX,
      XXXXXXX, KC_PENT, KC_P0,   KC_PEQL, KC_PDOT, KC_PSLS}
-  };
+  },
 
   /* Plover
    * ╭─────┬─────┬─────┬─────┬─────┲━━━━━┯━━━━━┱─────┬─────┬─────┬─────┬─────┐
@@ -283,7 +283,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX},
     {XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX}
-  };
+  }
 };
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -295,7 +295,7 @@ static uint16_t key_timer;
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
   switch(id) {
   case _MACRO_O:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_O);
       } else {
@@ -315,7 +315,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _MOVEMENT_E:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_E);
       } else {
@@ -335,7 +335,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _FUNCTION_U:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_U);
       } else {
@@ -355,7 +355,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _SHIFT_DEL:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_DELETE);
       } else {
@@ -375,7 +375,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _CTRL_SPACE:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_SPACE);
       } else {
@@ -395,7 +395,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _NUMBER_BKSP:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_BSPACE);
       } else {
@@ -417,7 +417,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _SYMBOL_ENTER:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_ENTER);
       } else {
@@ -439,7 +439,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _CTRL_TAB:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_TAB);
       } else {
@@ -459,7 +459,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     break;
   case _SHIFT_ESC:
-    if (record->tap_count) {
+    if (record->tap.count) {
       if (record->event.pressed) {
         register_code(KC_ESC);
       } else {
@@ -480,7 +480,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     break;
   case _NUMPAD_KEY:
     if (record->event.pressed) {
-      layer_invert(_NUMPAD)
+      layer_invert(_NUMPAD);
     }
     break;
   case _PLOVER_KEY:
