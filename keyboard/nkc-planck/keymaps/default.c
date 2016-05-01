@@ -45,7 +45,7 @@ extern keymap_config_t keymap_config;
 #define U(kc) MEH(kc) // Shift+Ctrl+Alt+kc
 
 // macro keys
-#define KEYDELAY 150
+#define KEYDELAY 250
 #define LAYERDELAY 100
 
 #define MACRO_O M(_MACRO_O)
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     {KC_QUES, KC_Q,    KC_J,    KC_K,    KC_X,    KC_VOLD,
      KC_VOLU, KC_B,    KC_M,    KC_W,    KC_V,    KC_Z},
     {KC_LALT, CAG,     KC_LGUI, SFT_DEL, CTL_SPC, NUM_BSP,
-     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, CAG,     KC_RALT}
+     SYM_ENT, CTL_TAB, SFT_ESC, KC_RGUI, CAG,     KC_LALT}
   },
 
   /* Shift
@@ -290,7 +290,7 @@ const uint16_t PROGMEM fn_actions[] = {
 
 };
 
-static uint16_t key_timer;
+  static uint16_t key_timer;
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
   switch(id) {
@@ -364,9 +364,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     } else {
       if (record->event.pressed) {
         key_timer = timer_read();
-         register_code(KC_LSHIFT);
+        layer_on(_SHIFT);
       } else {
-        unregister_code(KC_LSHIFT);
+        layer_off(_SHIFT);
         if (timer_elapsed(key_timer) < KEYDELAY) {
           register_code(KC_DELETE);
           unregister_code(KC_DELETE);
@@ -468,9 +468,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     } else {
       if (record->event.pressed) {
         key_timer = timer_read();
-        register_code(KC_RSHIFT);
+        layer_on(_SHIFT);
       } else {
-        unregister_code(KC_RSHIFT);
+        layer_off(_SHIFT);
         if (timer_elapsed(key_timer) < KEYDELAY) {
           register_code(KC_ESC);
           unregister_code(KC_ESC);
